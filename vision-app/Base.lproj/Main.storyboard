@@ -1,24 +1,115 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--CameraVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="CameraVC" customModule="vision_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zI6-yh-XWI">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JJj-dy-BTl" customClass="RoundedShadowImageView" customModule="vision_app" customModuleProvider="target">
+                                <rect key="frame" x="280" y="519" width="75" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="aHY-6J-nH7"/>
+                                    <constraint firstAttribute="height" constant="128" id="qcb-2M-bLE"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q6j-G0-ykK" customClass="RoundedShadowView" customModule="vision_app" customModuleProvider="target">
+                                <rect key="frame" x="20" y="50" width="335" height="60"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="ipf-aL-2CR">
+                                        <rect key="frame" x="8" y="8" width="319" height="44"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="The names of items captured will appear here" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="8K1-6H-kt3">
+                                                <rect key="frame" x="0.0" y="0.0" width="319" height="25"/>
+                                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="18"/>
+                                                <color key="textColor" red="0.80784313730000001" green="0.3294117647" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="CONFIEDNCE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jaq-2H-piB">
+                                                <rect key="frame" x="126.5" y="31" width="66.5" height="13"/>
+                                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="10"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="ipf-aL-2CR" secondAttribute="trailing" constant="8" id="5sI-yP-zae"/>
+                                    <constraint firstAttribute="bottom" secondItem="ipf-aL-2CR" secondAttribute="bottom" constant="8" id="6Qg-Cg-uQx"/>
+                                    <constraint firstItem="ipf-aL-2CR" firstAttribute="leading" secondItem="Q6j-G0-ykK" secondAttribute="leading" constant="8" id="8iY-lR-fyh"/>
+                                    <constraint firstItem="ipf-aL-2CR" firstAttribute="top" secondItem="Q6j-G0-ykK" secondAttribute="top" constant="8" id="C35-qH-BeG"/>
+                                    <constraint firstAttribute="height" constant="60" id="YbY-ju-klH"/>
+                                </constraints>
+                            </view>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="0gG-xs-iVo">
+                                <rect key="frame" x="307.5" y="573" width="20" height="20"/>
+                                <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0TI-ar-Etm" customClass="RoundedShadowButton" customModule="vision_app" customModuleProvider="target">
+                                <rect key="frame" x="20" y="615" width="100" height="32"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="J34-YZ-jLV"/>
+                                    <constraint firstAttribute="height" constant="32" id="MuP-66-afv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="14"/>
+                                <state key="normal" title="FLASH OFF">
+                                    <color key="titleColor" red="0.80784313730000001" green="0.3294117647" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="flashBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="66m-J8-5Uw"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="0TI-ar-Etm" secondAttribute="bottom" constant="20" id="0u2-Lp-CrY"/>
+                            <constraint firstItem="0TI-ar-Etm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="7YL-Y9-kPm"/>
+                            <constraint firstItem="zI6-yh-XWI" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="APr-VC-uhH"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="JJj-dy-BTl" secondAttribute="bottom" constant="20" id="BHA-Zo-6Wh"/>
+                            <constraint firstItem="zI6-yh-XWI" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="BXa-N7-iHA"/>
+                            <constraint firstItem="0gG-xs-iVo" firstAttribute="centerX" secondItem="JJj-dy-BTl" secondAttribute="centerX" id="FUK-qZ-KtL"/>
+                            <constraint firstItem="Q6j-G0-ykK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="KNU-b9-gUf"/>
+                            <constraint firstItem="zI6-yh-XWI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="QrK-gG-XJm"/>
+                            <constraint firstItem="Q6j-G0-ykK" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="Wik-FU-djd"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Q6j-G0-ykK" secondAttribute="trailing" constant="20" id="ay7-Zt-Y7W"/>
+                            <constraint firstItem="zI6-yh-XWI" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="gt2-eh-fZk"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="JJj-dy-BTl" secondAttribute="trailing" constant="20" id="j2y-d0-aBE"/>
+                            <constraint firstItem="0gG-xs-iVo" firstAttribute="centerY" secondItem="JJj-dy-BTl" secondAttribute="centerY" id="omK-JU-kCM"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="cameraView" destination="zI6-yh-XWI" id="UQ5-1C-z9N"/>
+                        <outlet property="capturedImgView" destination="JJj-dy-BTl" id="Mxd-MG-AOG"/>
+                        <outlet property="confiedenceLbl" destination="Jaq-2H-piB" id="8x1-wJ-NWP"/>
+                        <outlet property="flashBtn" destination="0TI-ar-Etm" id="dGI-hJ-ceV"/>
+                        <outlet property="identLbl" destination="8K1-6H-kt3" id="tDq-68-lVN"/>
+                        <outlet property="roundedLblView" destination="Q6j-G0-ykK" id="CAo-U9-x2v"/>
+                        <outlet property="spinner" destination="0gG-xs-iVo" id="DOq-NB-4PL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="132.68365817091455"/>
         </scene>
     </scenes>
 </document>
